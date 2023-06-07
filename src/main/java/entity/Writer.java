@@ -1,5 +1,8 @@
 package entity;
 
+import java.sql.Array;
+import java.sql.Date;
+
 public class Writer {
     private String name;
     private String lastName;
@@ -14,6 +17,9 @@ public class Writer {
         this.age = age;
         this.bookNames = new String[maxNumOfBooks];
         this.numOfBooks = 0;
+    }
+
+    public Writer(int id, String name, String lastName, int age, Array book) {
     }
 
     public String getName() {
@@ -58,5 +64,9 @@ public class Writer {
     }
 
 
+    public Object[] getBook() {
+        Object[] objects = new Object[0];
+        return objects;
+    }
 }
 
