@@ -50,18 +50,20 @@ public class BookRepository {
         preparedStatement.close();
         return users;
     }
+    public void delete(Book book) {
+        try {
+            String sql = "DELETE FROM books WHERE title = ? AND author = ? AND year_published = ?";
+            Connection connection = MyConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, book.getTitle());
+            statement.setString(2, book.getAuthor());
+            statement.setInt(3, book.getYearPublished());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
-//    public void delete(Book book) {
-//        try {
-//            String sql = "DELETE FROM books WHERE title = ? AND author = ? AND year_published = ?";
-//            PreparedStatement statement = connection.prepareStatement(sql);
-//            statement.setString(1, book.getTitle());
-//            statement.setString(2, book.getAuthor());
-//            statement.setInt(3, book.getYearPublished());
-//            statement.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
 
